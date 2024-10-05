@@ -18,7 +18,12 @@ export class AppComponent {
   constructor(private http: HttpClient){
     
 
-    this.http.get('/instance.php').subscribe((data: any)=> {
+    this.http.get('/instance.php', {
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+      }
+    }).subscribe((data: any)=> {
        this.idInstance = data.instance_id;
     })
 
