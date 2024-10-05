@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
@@ -14,14 +15,13 @@ export class AppComponent {
 
   public idInstance:string = "";
 
-  constructor(){
-    console.log(localStorage.getItem('idInstance'))
-    if(localStorage.getItem('idInstance') === null || localStorage.getItem('idInstance') === undefined ){
-      localStorage.setItem('idInstance', uuidv4());
-      this.idInstance = localStorage.getItem('idInstance') || "";
-    }else{
-      this.idInstance = localStorage.getItem('idInstance') || "";
-    }
+  constructor(private http: HttpClient){
+    
+
+    this.http.get('/instance.php').subscribe((data: any)=> {
+       this.idInstance = data.instance_id;
+    })
+
   }
 
 }

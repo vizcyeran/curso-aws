@@ -24,7 +24,7 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }, "src/assets"
+              }, "src/assets", "src/instance.php"
             ],
             "styles": [
               "src/styles.css"
