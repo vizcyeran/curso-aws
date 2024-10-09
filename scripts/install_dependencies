@@ -1,6 +1,0 @@
-#!/bin/bash
-yum install -y httpd
-if [ -d /var/www/html ]; then
-  rm -rf /var/www/html/*
-fi
-
