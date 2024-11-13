@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo Installing dependencies...
+      - npm install
+  build:
+    commands:
+      - echo Building the Angular app...
+      - npm run build 
+  post_build:
+    commands:
+      - echo Copying scripts folder and appspec.yaml to dist...
+      - cp -r scripts dist/curso-aws/browser/
+      - cp appspec.yml dist/curso-aws/browser/
+
+artifacts:
+  files:
+    - 'scripts/**/*'
+    - 'appspec.yml'
+    - '**/*'
+  base-directory: ./dist/curso-aws/browser/
